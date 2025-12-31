@@ -48,7 +48,7 @@ class PosSession(models.Model):
         extra_fields = [
             'vat', 'email', 'phone', 'mobile',
             'street', 'street2', 'zip', 'city',
-            'state_id', 'country_id',
+            'state_id', 'country_id','user_id',
         ]
 
         for f in extra_fields:
