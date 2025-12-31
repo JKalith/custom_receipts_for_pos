@@ -19,7 +19,8 @@ patch(Order.prototype, {
           user_id: p.user_id || null, // many2one => [id, nombre]
         }
       : null;
-
+    // ✅ Snapshot fecha (historial/reprint)
+    data.order_date_iso = this.date_order || new Date().toISOString();
     return data;
   },
 });
