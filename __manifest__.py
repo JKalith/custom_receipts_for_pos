@@ -41,17 +41,20 @@
         'views/pos_receipt_views.xml',
         'views/pos_config_views.xml'
     ],
-    'assets': {
-        'point_of_sale._assets_pos': [
-            'custom_receipts_for_pos/static/src/js/receipt_design.js',
-            'custom_receipts_for_pos/static/src/xml/order_receipt.xml',
-            'custom_receipts_for_pos/static/src/js/receipt_partner_date_patch.js',
-            'custom_receipts_for_pos/static/src/js/receipt_fetch_date_patch.js', 
-        ],
-    },
+'assets': {
+    'point_of_sale._assets_pos': [
+        'custom_receipts_for_pos/static/src/js/receipt_design.js',
+        'custom_receipts_for_pos/static/src/xml/order_receipt.xml',
+        'custom_receipts_for_pos/static/src/js/receipt_partner_date_patch.js',
+        'custom_receipts_for_pos/static/src/js/receipt_fetch_date_patch.js',
+        'custom_receipts_for_pos/static/src/js/order_receipt_patch.js',
+    ],
+},
+
     'images': ['static/description/banner.png'],
     'license': 'AGPL-3',
     'installable': True,
     'auto_install': False,
     'application': False
 }
+

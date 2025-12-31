@@ -5,24 +5,28 @@ import { onMounted } from "@odoo/owl";
 
 patch(ReceiptScreen.prototype, {
     setup() {
-        this._super.apply(this, arguments);
-        const self = this;
-        onMounted(async function () {
+        super.setup();
+
+        onMounted(async () => {
             try {
-                const receipt = self.props && self.props.receipt ? self.props.receipt : null;
-                if (!receipt) { return; }
-                if (receipt.date_original) { return; } // ya la tenemos
+                const receipt = this.props?.receipt;
+                if (!receipt) return;
 
-                // Usamos el nombre/pos_reference del recibo
-                let ref = '';
-                if (receipt.name) { ref = String(receipt.name).trim(); }
-                if (!ref) { return; }
+                // si ya existe no recargar
+                if (receipt.date_original) return;
 
-                const orm = self.env.services.orm;
-                const d = await orm.call('pos.order', 'pos_get_order_date', [], { pos_reference: ref });
+                // usa un ref válido del ticket
+                const ref = receipt?.name || receipt?.pos_reference || this.pos?.get_order()?.name;
+                if (!ref) return;
+
+                const orm = this.env.services.orm;
+
+                // ✅ correcto: pasar pos_reference como parámetro posicional
+                const d = await orm.call("pos.order", "pos_get_order_date", [ref]);
+
                 if (d) {
-                    receipt.date_original = String(d).replace('T',' ').replace('Z','');
-                    self.render(true);   // refrescar el ticket
+                    receipt.date_original = String(d).replace("T", " ").replace("Z", "");
+                    this.render(true); // refrescar ticket
                 }
             } catch (e) {
                 // silencioso
