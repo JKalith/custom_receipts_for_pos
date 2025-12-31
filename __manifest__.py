@@ -48,6 +48,7 @@
         'custom_receipts_for_pos/static/src/js/receipt_partner_date_patch.js',
         'custom_receipts_for_pos/static/src/js/receipt_fetch_date_patch.js',
         'custom_receipts_for_pos/static/src/js/order_receipt_patch.js',
+         "custom_receipts_for_pos/static/src/js/receipt_fetch_invoiceinfo_patch.js",
     ],
 },
 
