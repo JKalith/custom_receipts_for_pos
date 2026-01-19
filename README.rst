@@ -38,3 +38,8 @@ For support and more information, please visit `Our Website <https://cybrosys.co
 Further information
 ===================
 HTML Description: `<static/description/index.html>`__
+
+
+chown -R odoo:custom_receipts_for_pos
+find custom_receipts_for_pos -type d -exec chmod 755 {} \;
+find custom_receipts_for_pos -type f -exec chmod 644 {} \;
